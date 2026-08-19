@@ -85,18 +85,18 @@ We evaluate the contribution of the source-selection criterion and the reallocat
 
 | Variant                    | Evaluation Set          |    UTMOS ↑ |     PESQ ↑ |     STOI ↑ |       F1 ↑ | Util. (%)   |
 | -------------------------- | ----------------------- | ---------: | ---------: | ---------: | ---------: | ----------: |
-| **DARe-VQ**                | **LibriTTS test-clean** |     4.0358 | **2.4171** | **0.9197** | **0.9417** |       99.76 |
-|                            | **LibriTTS test-other** |     3.5544 | **2.1440** | **0.8880** | **0.9174** |       99.76 |
-|                            | **LJSpeech**            |     3.9340 | **2.0748** | **0.9092** | **0.9191** |       98.43 |
+| **DARe-VQ**                | LibriTTS test-clean     |     4.0358 | **2.4171** | **0.9197** | **0.9417** |       99.76 |
+|                            | LibriTTS test-other     | **3.5544** | **2.1440** | **0.8880** | **0.9174** |       99.76 |
+|                            | LJSpeech                | **3.9340** | **2.0748** | **0.9092** | **0.9191** |       98.43 |
 | Score: Additive            | LibriTTS test-clean     |     3.9789 |     2.3768 |     0.9160 |     0.9396 |       99.74 |
 |                            | LibriTTS test-other     |     3.5049 |     2.1101 |     0.8843 |     0.9152 |       99.74 |
-|                            | LJSpeech                |     3.8535 |     2.0210 |     0.9047 |     0.9156 |   **98.58** |
-| Score: Usage only          | LibriTTS test-clean     |     3.9762 |     2.2280 |     0.9079 |     0.9364 |   **99.96** |
-|                            | LibriTTS test-other     |     3.4807 |     1.9684 |     0.8733 |     0.9109 |   **99.96** |
+|                            | LJSpeech                |     3.8535 |     2.0210 |     0.9047 |     0.9156 |       98.58 |
+| Score: Usage only          | LibriTTS test-clean     |     3.9762 |     2.2280 |     0.9079 |     0.9364 |       99.96 |
+|                            | LibriTTS test-other     |     3.4807 |     1.9684 |     0.8733 |     0.9109 |       99.96 |
 |                            | LJSpeech                |     3.8400 |     1.9520 |     0.8955 |     0.9181 |       96.53 |
 | Reallocation: Random reset | LibriTTS test-clean     | **4.0488** |     2.3491 |     0.9133 |     0.9387 |       23.39 |
-|                            | LibriTTS test-other     | **3.5543** |     2.0753 |     0.8808 |     0.9146 |       23.39 |
-|                            | LJSpeech                | **3.9211** |     2.0268 |     0.9040 |     0.9153 |       23.39 |
+|                            | LibriTTS test-other     |     3.5543 |     2.0753 |     0.8808 |     0.9146 |       23.39 |
+|                            | LJSpeech                |     3.9211 |     2.0268 |     0.9040 |     0.9153 |       23.39 |
 
 The ablation results show that **high utilization alone is insufficient**. Usage-only and additive scoring recover nearly full utilization but consistently underperform the full usage-distortion product in reconstruction quality. Random reset activates only **23.39%** of the codebook, whereas local splitting raises utilization to nearly 100% while improving PESQ, STOI, and F1. These results highlight the importance of reallocating inactive capacity toward regions that are simultaneously **frequently used and poorly represented**.
 
