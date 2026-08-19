@@ -47,27 +47,6 @@ The evidence window (N) plays an important role in stabilizing codebook maintena
 
 With (N=1), single-batch evidence can misclassify code activity, causing newly split codes to be repeatedly reclaimed before sufficient support is accumulated. A moderate evidence window stabilizes activity estimation while preserving timely reallocation.
 
-## Experimental Setup
-
-The experiments are based on the **WavTokenizer** framework.
-
-Main configuration:
-
-* Training dataset: **LibriTTS**
-* Training duration: **300K steps**
-* GPUs: **8 × NVIDIA A800**
-* Batch size: **36**
-* Learning rate: **2e-4**
-* Token rate: **75 tokens/s**
-* Segment length: **3 s**
-* Codebook sizes: **4K / 16K / 131K**
-* (\tau_{\mathrm{dead}} = 2)
-* (\tau_{\mathrm{src}} = 5)
-* Evidence window:
-
-  * 4K: (N=2)
-  * 16K: (N=10)
-  * 131K: (N=120)
 
 ## Installation
 
