@@ -4,6 +4,21 @@ Official implementation of **DARe-VQ** (**D**elayed Evidence **A**ggregation and
 
 DARe-VQ is a training-time codebook maintenance strategy for large **Exponential Moving Average (EMA)** vector quantizers. It addresses the severe codebook collapse that can occur when naively scaling EMA-updated codebooks, allowing enlarged codebooks to translate into usable representational capacity and improved speech reconstruction quality.
 
+## Installation
+
+Create the environment and install dependencies according to the provided environment file:
+
+```bash
+# Example
+conda create -n darevq python=3.9
+conda activate darevq
+
+pip install -r requirements.txt
+```
+
+Please replace the commands above if your repository uses a different environment setup.
+
+
 ## Overview
 
 Naively increasing the size of an EMA-updated codebook does not necessarily increase its effective capacity. In our experiments, scaling a standard EMA codebook from **4K to 16K entries** reduces codebook utilization to only **14.55%** and degrades reconstruction quality.
@@ -46,22 +61,6 @@ The evidence window (N) plays an important role in stabilizing codebook maintena
 |  20 |               99.93% | Stable but less responsive          |
 
 With (N=1), single-batch evidence can misclassify code activity, causing newly split codes to be repeatedly reclaimed before sufficient support is accumulated. A moderate evidence window stabilizes activity estimation while preserving timely reallocation.
-
-
-## Installation
-
-Create the environment and install dependencies according to the provided environment file:
-
-```bash
-# Example
-conda create -n darevq python=3.9
-conda activate darevq
-
-pip install -r requirements.txt
-```
-
-Please replace the commands above if your repository uses a different environment setup.
-
 
 ## Acknowledgements
 
