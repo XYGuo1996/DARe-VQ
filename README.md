@@ -35,8 +35,6 @@ DARe-VQ modifies only the **EMA codebook maintenance procedure**. It introduces 
 
 ## Main Results
 
-## Main Results
-
 ### Comparison with Standard EMA
 
 We first compare DARe-VQ with standard EMA codebook maintenance under the same training setup. Naively scaling the EMA codebook from 4K to 16K causes severe codebook collapse, reducing utilization to about 14.5% and degrading reconstruction quality. DARe-VQ restores near-complete utilization and consistently outperforms both EMA-16K and EMA-4K across all reconstruction metrics.
