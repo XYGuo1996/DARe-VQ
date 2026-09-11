@@ -1,6 +1,6 @@
 # DARe-VQ: Scaling Large EMA Codebooks via Delayed Evidence Aggregation and Usage Distortion Guided Reallocation
 
-[![Hugging Face Model](https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-DARe--VQ-yellow)](https://huggingface.co/XiaoyongGuo/DARe_VQ)
+[![Hugging Face Model](https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-DARe--VQ-yellow)](https://huggingface.co/XiaoyongGuo/DARe-VQ)
 
 DARe-VQ is a training-time codebook maintenance strategy for large **Exponential Moving Average (EMA)** vector quantizers. It addresses the severe codebook collapse that can occur when naively scaling EMA-updated codebooks, allowing enlarged codebooks to translate into usable representational capacity and improved speech reconstruction quality.
 
