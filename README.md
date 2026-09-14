@@ -101,8 +101,8 @@ We first compare DARe-VQ with standard EMA codebook maintenance under the same t
       <td>14.56</td>
     </tr>
     <tr>
-      <td rowspan="3"><strong>DARe-VQ-16K</strong></td>
-      <td><strong>LibriTTS test-clean</strong></td>
+      <td rowspan="3">DARe-VQ-16K</td>
+      <td>LibriTTS test-clean</td>
       <td><strong>4.0358</strong></td>
       <td><strong>2.4171</strong></td>
       <td><strong>0.9197</strong></td>
@@ -110,14 +110,14 @@ We first compare DARe-VQ with standard EMA codebook maintenance under the same t
       <td rowspan="2">99.76</td>
     </tr>
     <tr>
-      <td><strong>LibriTTS test-other</strong></td>
+      <td>LibriTTS test-other</td>
       <td><strong>3.5544</strong></td>
       <td><strong>2.1440</strong></td>
       <td><strong>0.8880</strong></td>
       <td><strong>0.9174</strong></td>
     </tr>
     <tr>
-      <td><strong>LJSpeech</strong></td>
+      <td>LJSpeech</td>
       <td><strong>3.9340</strong></td>
       <td><strong>2.0748</strong></td>
       <td><strong>0.9092</strong></td>
@@ -173,7 +173,7 @@ DARe-VQ remains effective when scaling the codebook from 16K to 131K entries. Th
       <td>98.43</td>
     </tr>
     <tr>
-      <td rowspan="3"><strong>DARe-VQ-131K</strong></td>
+      <td rowspan="3">DARe-VQ-131K</td>
       <td>LibriTTS test-clean</td>
       <td>3.9912</td>
       <td><strong>2.5259</strong></td>
@@ -226,7 +226,7 @@ We evaluate the contribution of the source-selection criterion and the reallocat
   </thead>
   <tbody>
     <tr>
-      <td rowspan="3"><strong>DARe-VQ-16K</strong></td>
+      <td rowspan="3">DARe-VQ-16K</td>
       <td>LibriTTS test-clean</td>
       <td>4.0358</td>
       <td><strong>2.4171</strong></td>
