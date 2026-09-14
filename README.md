@@ -174,7 +174,7 @@ DARe-VQ remains effective when scaling the codebook from 16K to 131K entries. Th
     </tr>
     <tr>
       <td rowspan="3"><strong>DARe-VQ-131K</strong></td>
-      <td><strong>LibriTTS test-clean</strong></td>
+      <td>LibriTTS test-clean</td>
       <td>3.9912</td>
       <td><strong>2.5259</strong></td>
       <td><strong>0.9246</strong></td>
@@ -182,14 +182,14 @@ DARe-VQ remains effective when scaling the codebook from 16K to 131K entries. Th
       <td rowspan="2">99.47</td>
     </tr>
     <tr>
-      <td><strong>LibriTTS test-other</strong></td>
+      <td>LibriTTS test-other</td>
       <td>3.4949</td>
       <td><strong>2.2347</strong></td>
       <td><strong>0.8944</strong></td>
       <td><strong>0.9204</strong></td>
     </tr>
     <tr>
-      <td><strong>LJSpeech</strong></td>
+      <td>LJSpeech</td>
       <td>3.9202</td>
       <td><strong>2.1960</strong></td>
       <td><strong>0.9150</strong></td>
@@ -226,7 +226,7 @@ We evaluate the contribution of the source-selection criterion and the reallocat
   </thead>
   <tbody>
     <tr>
-      <td rowspan="3"><strong>DARe-VQ</strong></td>
+      <td rowspan="3"><strong>DARe-VQ-16K</strong></td>
       <td>LibriTTS test-clean</td>
       <td>4.0358</td>
       <td><strong>2.4171</strong></td>
