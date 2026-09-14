@@ -135,14 +135,69 @@ DARe-VQ-16K increases LibriTTS codebook utilization from **14.55% to 99.76%** an
 
 DARe-VQ remains effective when scaling the codebook from 16K to 131K entries. The 131K configuration retains near-complete utilization while further improving PESQ, STOI, and V/UV F1 across all evaluation sets.
 
-| Method           | Evaluation Set          |    UTMOS ↑ |     PESQ ↑ |     STOI ↑ |       F1 ↑ | Util. (%)   |
-| ---------------- | ----------------------- | ---------: | ---------: | ---------: | ---------: | ----------: |
-| DARe-VQ-16K      | LibriTTS test-clean     | **4.0358** |     2.4171 |     0.9197 |     0.9417 |       99.76 |
-|                  | LibriTTS test-other     | **3.5544** |     2.1440 |     0.8880 |     0.9174 |             |
-|                  | LJSpeech                | **3.9340** |     2.0748 |     0.9092 |     0.9191 |       98.43 |
-| **DARe-VQ-131K** | **LibriTTS test-clean** |     3.9912 | **2.5259** | **0.9246** | **0.9441** |       99.47 |
-|                  | **LibriTTS test-other** |     3.4949 | **2.2347** | **0.8944** | **0.9204** |             |
-|                  | **LJSpeech**            |     3.9202 | **2.1960** | **0.9150** | **0.9252** |       95.28 |
+<table>
+  <thead>
+    <tr>
+      <th>Method</th>
+      <th>Evaluation Set</th>
+      <th>UTMOS ↑</th>
+      <th>PESQ ↑</th>
+      <th>STOI ↑</th>
+      <th>F1 ↑</th>
+      <th>Util. (%)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td rowspan="3">DARe-VQ-16K</td>
+      <td>LibriTTS test-clean</td>
+      <td><strong>4.0358</strong></td>
+      <td>2.4171</td>
+      <td>0.9197</td>
+      <td>0.9417</td>
+      <td rowspan="2">99.76</td>
+    </tr>
+    <tr>
+      <td>LibriTTS test-other</td>
+      <td><strong>3.5544</strong></td>
+      <td>2.1440</td>
+      <td>0.8880</td>
+      <td>0.9174</td>
+    </tr>
+    <tr>
+      <td>LJSpeech</td>
+      <td><strong>3.9340</strong></td>
+      <td>2.0748</td>
+      <td>0.9092</td>
+      <td>0.9191</td>
+      <td>98.43</td>
+    </tr>
+    <tr>
+      <td rowspan="3"><strong>DARe-VQ-131K</strong></td>
+      <td><strong>LibriTTS test-clean</strong></td>
+      <td>3.9912</td>
+      <td><strong>2.5259</strong></td>
+      <td><strong>0.9246</strong></td>
+      <td><strong>0.9441</strong></td>
+      <td rowspan="2">99.47</td>
+    </tr>
+    <tr>
+      <td><strong>LibriTTS test-other</strong></td>
+      <td>3.4949</td>
+      <td><strong>2.2347</strong></td>
+      <td><strong>0.8944</strong></td>
+      <td><strong>0.9204</strong></td>
+    </tr>
+    <tr>
+      <td><strong>LJSpeech</strong></td>
+      <td>3.9202</td>
+      <td><strong>2.1960</strong></td>
+      <td><strong>0.9150</strong></td>
+      <td><strong>0.9252</strong></td>
+      <td>95.28</td>
+    </tr>
+  </tbody>
+</table>
 
 Increasing the codebook to **131,072 entries** retains **99.47% utilization on LibriTTS** and **95.28% on LJSpeech**. Compared with DARe-VQ-16K, the 131K model further improves **PESQ, STOI, and F1 on all evaluation sets**, with only a modest reduction in UTMOS.
 
@@ -157,20 +212,117 @@ We evaluate the contribution of the source-selection criterion and the reallocat
 * **Score: Usage only:** selects source clusters using only their usage.
 * **Reallocation: Random reset:** retains delayed evidence but replaces local splitting with random replacement.
 
-| Variant                    | Evaluation Set          |    UTMOS ↑ |     PESQ ↑ |     STOI ↑ |       F1 ↑ | Util. (%)   |
-| -------------------------- | ----------------------- | ---------: | ---------: | ---------: | ---------: | ----------: |
-| **DARe-VQ**                | LibriTTS test-clean     |     4.0358 | **2.4171** | **0.9197** | **0.9417** |       99.76 |
-|                            | LibriTTS test-other     | **3.5544** | **2.1440** | **0.8880** | **0.9174** |             |
-|                            | LJSpeech                | **3.9340** | **2.0748** | **0.9092** | **0.9191** |       98.43 |
-| Score: Additive            | LibriTTS test-clean     |     3.9789 |     2.3768 |     0.9160 |     0.9396 |       99.74 |
-|                            | LibriTTS test-other     |     3.5049 |     2.1101 |     0.8843 |     0.9152 |             |
-|                            | LJSpeech                |     3.8535 |     2.0210 |     0.9047 |     0.9156 |       98.58 |
-| Score: Usage only          | LibriTTS test-clean     |     3.9762 |     2.2280 |     0.9079 |     0.9364 |       99.96 |
-|                            | LibriTTS test-other     |     3.4807 |     1.9684 |     0.8733 |     0.9109 |             |
-|                            | LJSpeech                |     3.8400 |     1.9520 |     0.8955 |     0.9181 |       96.53 |
-| Reallocation: Random reset | LibriTTS test-clean     | **4.0488** |     2.3491 |     0.9133 |     0.9387 |       23.39 |
-|                            | LibriTTS test-other     |     3.5543 |     2.0753 |     0.8808 |     0.9146 |             |
-|                            | LJSpeech                |     3.9211 |     2.0268 |     0.9040 |     0.9153 |       23.39 |
+<table>
+  <thead>
+    <tr>
+      <th>Variant</th>
+      <th>Evaluation Set</th>
+      <th>UTMOS ↑</th>
+      <th>PESQ ↑</th>
+      <th>STOI ↑</th>
+      <th>F1 ↑</th>
+      <th>Util. (%)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td rowspan="3"><strong>DARe-VQ</strong></td>
+      <td>LibriTTS test-clean</td>
+      <td>4.0358</td>
+      <td><strong>2.4171</strong></td>
+      <td><strong>0.9197</strong></td>
+      <td><strong>0.9417</strong></td>
+      <td rowspan="2">99.76</td>
+    </tr>
+    <tr>
+      <td>LibriTTS test-other</td>
+      <td><strong>3.5544</strong></td>
+      <td><strong>2.1440</strong></td>
+      <td><strong>0.8880</strong></td>
+      <td><strong>0.9174</strong></td>
+    </tr>
+    <tr>
+      <td>LJSpeech</td>
+      <td><strong>3.9340</strong></td>
+      <td><strong>2.0748</strong></td>
+      <td><strong>0.9092</strong></td>
+      <td><strong>0.9191</strong></td>
+      <td>98.43</td>
+    </tr>
+    <tr>
+      <td rowspan="3">Score: Additive</td>
+      <td>LibriTTS test-clean</td>
+      <td>3.9789</td>
+      <td>2.3768</td>
+      <td>0.9160</td>
+      <td>0.9396</td>
+      <td rowspan="2">99.74</td>
+    </tr>
+    <tr>
+      <td>LibriTTS test-other</td>
+      <td>3.5049</td>
+      <td>2.1101</td>
+      <td>0.8843</td>
+      <td>0.9152</td>
+    </tr>
+    <tr>
+      <td>LJSpeech</td>
+      <td>3.8535</td>
+      <td>2.0210</td>
+      <td>0.9047</td>
+      <td>0.9156</td>
+      <td>98.58</td>
+    </tr>
+    <tr>
+      <td rowspan="3">Score: Usage only</td>
+      <td>LibriTTS test-clean</td>
+      <td>3.9762</td>
+      <td>2.2280</td>
+      <td>0.9079</td>
+      <td>0.9364</td>
+      <td rowspan="2">99.96</td>
+    </tr>
+    <tr>
+      <td>LibriTTS test-other</td>
+      <td>3.4807</td>
+      <td>1.9684</td>
+      <td>0.8733</td>
+      <td>0.9109</td>
+    </tr>
+    <tr>
+      <td>LJSpeech</td>
+      <td>3.8400</td>
+      <td>1.9520</td>
+      <td>0.8955</td>
+      <td>0.9181</td>
+      <td>96.53</td>
+    </tr>
+    <tr>
+      <td rowspan="3">Reallocation: Random reset</td>
+      <td>LibriTTS test-clean</td>
+      <td><strong>4.0488</strong></td>
+      <td>2.3491</td>
+      <td>0.9133</td>
+      <td>0.9387</td>
+      <td rowspan="2">23.39</td>
+    </tr>
+    <tr>
+      <td>LibriTTS test-other</td>
+      <td>3.5543</td>
+      <td>2.0753</td>
+      <td>0.8808</td>
+      <td>0.9146</td>
+    </tr>
+    <tr>
+      <td>LJSpeech</td>
+      <td>3.9211</td>
+      <td>2.0268</td>
+      <td>0.9040</td>
+      <td>0.9153</td>
+      <td>23.39</td>
+    </tr>
+  </tbody>
+</table>
 
 The ablation results show that **high utilization alone is insufficient**. Usage-only and additive scoring recover nearly full utilization but consistently underperform the full usage-distortion product in reconstruction quality. Random reset activates only **23.39%** of the codebook, whereas local splitting raises utilization to nearly 100% while improving PESQ, STOI, and F1. These results highlight the importance of reallocating inactive capacity toward regions that are simultaneously **frequently used and poorly represented**.
 
