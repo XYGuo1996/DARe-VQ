@@ -59,7 +59,7 @@ We first compare DARe-VQ with standard EMA codebook maintenance under the same t
       <td>2.3897</td>
       <td>0.9151</td>
       <td>0.9390</td>
-      <td>100.00</td>
+      <td rowspan="2">100.00</td>
     </tr>
     <tr>
       <td>LibriTTS test-other</td>
@@ -67,7 +67,6 @@ We first compare DARe-VQ with standard EMA codebook maintenance under the same t
       <td>2.1281</td>
       <td>0.8828</td>
       <td>0.9146</td>
-      <td></td>
     </tr>
     <tr>
       <td>LJSpeech</td>
