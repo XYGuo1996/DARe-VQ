@@ -39,17 +39,96 @@ DARe-VQ modifies only the **EMA codebook maintenance procedure**. It introduces 
 
 We first compare DARe-VQ with standard EMA codebook maintenance under the same training setup. Naively scaling the EMA codebook from 4K to 16K causes severe codebook collapse, reducing utilization to about 14.5% and degrading reconstruction quality. DARe-VQ restores near-complete utilization and consistently outperforms both EMA-16K and EMA-4K across all reconstruction metrics.
 
-| Method          | Evaluation Set          |    UTMOS ↑ |     PESQ ↑ |     STOI ↑ |       F1 ↑ | Util. (%)   |
-| --------------- | ----------------------- | ---------: | ---------: | ---------: | ---------: | ----------: |
-| EMA-4K          | LibriTTS test-clean     |     3.9872 |     2.3897 |     0.9151 |     0.9390 |      100.00 |
-|                 | LibriTTS test-other     |     3.5032 |     2.1281 |     0.8828 |     0.9146 |             |
-|                 | LJSpeech                |     3.8350 |     2.0070 |     0.9011 |     0.9169 |       99.88 |
-| EMA-16K         | LibriTTS test-clean     |     3.8509 |     2.1583 |     0.8999 |     0.9316 |       14.55 |
-|                 | LibriTTS test-other     |     3.3608 |     1.9435 |     0.8668 |     0.9059 |             |
-|                 | LJSpeech                |     3.6851 |     1.8525 |     0.8871 |     0.9140 |       14.56 |
-| **DARe-VQ-16K** | **LibriTTS test-clean** | **4.0358** | **2.4171** | **0.9197** | **0.9417** |       99.76 |
-|                 | **LibriTTS test-other** | **3.5544** | **2.1440** | **0.8880** | **0.9174** |             |
-|                 | **LJSpeech**            | **3.9340** | **2.0748** | **0.9092** | **0.9191** |       98.43 |
+<table>
+  <thead>
+    <tr>
+      <th>Method</th>
+      <th>Evaluation Set</th>
+      <th>UTMOS ↑</th>
+      <th>PESQ ↑</th>
+      <th>STOI ↑</th>
+      <th>F1 ↑</th>
+      <th>Util. (%)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td rowspan="3">EMA-4K</td>
+      <td>LibriTTS test-clean</td>
+      <td>3.9872</td>
+      <td>2.3897</td>
+      <td>0.9151</td>
+      <td>0.9390</td>
+      <td>100.00</td>
+    </tr>
+    <tr>
+      <td>LibriTTS test-other</td>
+      <td>3.5032</td>
+      <td>2.1281</td>
+      <td>0.8828</td>
+      <td>0.9146</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>LJSpeech</td>
+      <td>3.8350</td>
+      <td>2.0070</td>
+      <td>0.9011</td>
+      <td>0.9169</td>
+      <td>99.88</td>
+    </tr>
+    <tr>
+      <td rowspan="3">EMA-16K</td>
+      <td>LibriTTS test-clean</td>
+      <td>3.8509</td>
+      <td>2.1583</td>
+      <td>0.8999</td>
+      <td>0.9316</td>
+      <td>14.55</td>
+    </tr>
+    <tr>
+      <td>LibriTTS test-other</td>
+      <td>3.3608</td>
+      <td>1.9435</td>
+      <td>0.8668</td>
+      <td>0.9059</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>LJSpeech</td>
+      <td>3.6851</td>
+      <td>1.8525</td>
+      <td>0.8871</td>
+      <td>0.9140</td>
+      <td>14.56</td>
+    </tr>
+    <tr>
+      <td rowspan="3"><strong>DARe-VQ-16K</strong></td>
+      <td><strong>LibriTTS test-clean</strong></td>
+      <td><strong>4.0358</strong></td>
+      <td><strong>2.4171</strong></td>
+      <td><strong>0.9197</strong></td>
+      <td><strong>0.9417</strong></td>
+      <td>99.76</td>
+    </tr>
+    <tr>
+      <td><strong>LibriTTS test-other</strong></td>
+      <td><strong>3.5544</strong></td>
+      <td><strong>2.1440</strong></td>
+      <td><strong>0.8880</strong></td>
+      <td><strong>0.9174</strong></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><strong>LJSpeech</strong></td>
+      <td><strong>3.9340</strong></td>
+      <td><strong>2.0748</strong></td>
+      <td><strong>0.9092</strong></td>
+      <td><strong>0.9191</strong></td>
+      <td>98.43</td>
+    </tr>
+  </tbody>
+</table>
 
 DARe-VQ-16K increases LibriTTS codebook utilization from **14.55% to 99.76%** and outperforms EMA-16K on every reported reconstruction metric. It also surpasses the healthy EMA-4K baseline, showing that the recovered entries provide useful representational capacity rather than merely increasing the number of active codes.
 
