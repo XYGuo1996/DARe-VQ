@@ -329,3 +329,7 @@ The ablation results show that **high utilization alone is insufficient**. Usage
 ## Acknowledgements
 
 This implementation is built upon the **WavTokenizer** framework. We thank the authors of WavTokenizer and related open-source projects for making their code publicly available.
+
+## Citation
+
+The paper is under review. The citation record will be updated when archival bibliographic information is available.
