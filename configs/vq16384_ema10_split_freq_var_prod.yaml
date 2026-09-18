@@ -1,0 +1,95 @@
+# 延迟EMA更新：累积5步后统一更新码本，死码本通过拆分得分最高的簇来替换，得分=频率^权重*簇内方差^权重（乘法组合，不归一化）
+seed_everything: 3407
+
+data:
+  class_path: decoder.dataset.VocosDataModule
+  init_args:
+    train_params:
+      filelist_path: ./WavTokenizer/data/train/libritts_train
+      sampling_rate: 24000
+      num_samples: 72000
+      batch_size: 36
+      num_workers: 8
+
+    val_params:
+      filelist_path: ./WavTokenizer/data/infer/librttts_val
+      sampling_rate: 24000
+      num_samples: 72000
+      batch_size: 5
+      num_workers: 8
+
+model:
+  class_path: decoder.experiment.WavTokenizer
+  init_args:
+    sample_rate: 24000
+    initial_learning_rate: 2e-4
+    mel_loss_coeff: 45
+    mrd_loss_coeff: 1.0
+    num_warmup_steps: 0
+    pretrain_mel_steps: 0
+
+    evaluate_utmos: true
+    evaluate_pesq: true
+    evaluate_periodicty: true
+
+    resume: false
+    resume_config: ./configs_ds/vq16384_ema10_split_freq_var_prod.yaml
+    resume_model: ./WavTokenizer/result/train/vq16384_ema10_split_freq_var_prod/xxx.ckpt
+
+    feature_extractor:
+      class_path: decoder.feature_extractors.EncodecFeatures
+      init_args:
+        encodec_model: encodec_24khz
+        bandwidths: [6.6, 6.6, 6.6, 6.6]
+        train_codebooks: true
+        num_quantizers: 1
+        dowmsamples: [8, 5, 4, 2]
+        vq_bins: 16384
+        vq_kmeans: 200
+        ema_update_every: 10
+        dead_code_strategy: split
+        split_candidate_strategy: frequency_variance_product
+        split_frequency_weight: 1.0
+        split_variance_weight: 1.0
+
+    backbone:
+      class_path: decoder.models.VocosBackbone
+      init_args:
+        input_channels: 512
+        dim: 768
+        intermediate_dim: 2304
+        num_layers: 12
+        adanorm_num_embeddings: 4
+
+    head:
+      class_path: decoder.heads.ISTFTHead
+      init_args:
+        dim: 768
+        n_fft: 1280
+        hop_length: 320
+        padding: same
+
+trainer:
+  logger:
+    class_path: pytorch_lightning.loggers.TensorBoardLogger
+    init_args:
+      save_dir: ./WavTokenizer/result/train/vq16384_ema10_split_freq_var_prod/
+  callbacks:
+    - class_path: pytorch_lightning.callbacks.LearningRateMonitor
+    - class_path: pytorch_lightning.callbacks.ModelSummary
+      init_args:
+        max_depth: 2
+    - class_path: pytorch_lightning.callbacks.ModelCheckpoint
+      init_args:
+        monitor: val_loss
+        filename: wavtokenizer_checkpoint_{epoch}_{step}_{val_loss:.4f}
+        save_top_k: 10
+        save_last: true
+    - class_path: decoder.helpers.GradNormCallback
+
+  max_steps: 300000
+  limit_val_batches: 100
+  accelerator: gpu
+  strategy: ddp
+  devices: 8
+  log_every_n_steps: 1000
