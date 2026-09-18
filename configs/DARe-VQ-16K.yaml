@@ -1,4 +1,3 @@
-# 延迟EMA更新：累积5步后统一更新码本，死码本通过拆分得分最高的簇来替换，得分=频率^权重*簇内方差^权重（乘法组合，不归一化）
 seed_everything: 3407
 
 data:
@@ -33,8 +32,8 @@ model:
     evaluate_periodicty: true
 
     resume: false
-    resume_config: ./configs_ds/vq16384_ema10_split_freq_var_prod.yaml
-    resume_model: ./WavTokenizer/result/train/vq16384_ema10_split_freq_var_prod/xxx.ckpt
+    resume_config: ./configs_ds/DARe-VQ-16K.yaml
+    resume_model: ./WavTokenizer/result/train/DARe-VQ-16K/xxx.ckpt
 
     feature_extractor:
       class_path: decoder.feature_extractors.EncodecFeatures
@@ -73,7 +72,7 @@ trainer:
   logger:
     class_path: pytorch_lightning.loggers.TensorBoardLogger
     init_args:
-      save_dir: ./WavTokenizer/result/train/vq16384_ema10_split_freq_var_prod/
+      save_dir: ./WavTokenizer/result/train/DARe-VQ-16K/
   callbacks:
     - class_path: pytorch_lightning.callbacks.LearningRateMonitor
     - class_path: pytorch_lightning.callbacks.ModelSummary
